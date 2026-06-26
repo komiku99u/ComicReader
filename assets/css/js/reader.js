@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ComicReader</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/css/reader.css">
+
+</head>
+
+<body>
+
+    <header id="topbar">
+
+        <button id="backButton">
+            ← Library
+        </button>
+
+        <span id="comicTitle">
+            Loading...
+        </span>
+
+    </header>
+
+    <main id="reader">
+
+        <div id="loading">
+
+            Loading Comic...
+
+        </div>
+
+    </main>
+
+    <script src="assets/js/jszip.min.js"></script>
+
+    <script src="assets/js/api.js"></script>
+
+    <script src="assets/js/reader.js"></script>
+
+</body>
+
+</html>
