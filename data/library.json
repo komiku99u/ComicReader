@@ -1,0 +1,70 @@
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const container = document.getElementById("library");
+
+    try {
+
+        const data = await ComicAPI.loadLibrary();
+
+        container.innerHTML = "";
+
+        const comics = data.library ?? [];
+
+        comics.forEach(comic => {
+
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.onclick = () => {
+
+                location.href =
+                    `comic.html?id=${comic.uid}`;
+
+            };
+
+            const cover = document.createElement("img");
+            cover.className = "cover";
+
+            cover.loading = "lazy";
+
+            cover.src =
+                `covers/${comic.cover}.webp`;
+
+            cover.onerror = () => {
+
+                cover.src =
+                    "assets/icons/no-cover.png";
+
+            };
+
+            const title = document.createElement("div");
+            title.className = "title";
+
+            title.textContent =
+                comic.title.display;
+
+            card.appendChild(cover);
+
+            card.appendChild(title);
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+
+        `<div class="loading">
+
+            Failed to load library.
+
+        </div>`;
+
+    }
+
+});
